@@ -1,0 +1,12 @@
+ import cv2 as cv
+ import numpy as np
+ i1=cv.imread('/home/rahul/Downloads/box.jpg',0)
+ 
+ _, th1 = cv.threshold(i1, 170, 255, cv.THRESH_BINARY)
+ cont, _ = cv.findContours(th1, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+ for i in cont:
+...     x,y,w,h=cv.boundingRect(i)
+...     i3 = cv.rectangle(th1,(x,y),(x+w,y+h),(255),3)
+... 
+cv.imwrite('/home/rahul/Downloads/i3.jpg',i3)
+True
